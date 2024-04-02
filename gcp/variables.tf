@@ -17,7 +17,7 @@ variable "container_memory" {
 variable "project_id" {
   type        = string
   description = "The name of the project"
-  default     = "unique-gcp-project-id"
+  default     = "dtc-de-course-380621"
 }
 
 variable "region" {
