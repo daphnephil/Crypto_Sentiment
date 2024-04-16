@@ -1,0 +1,112 @@
+version: 2
+
+models:
+  - name: dim_crypto_sentiment
+    description: >
+      Aggregated table of the fact_crypto_sentiment table.
+      The table contains sums, average and percentile of both btc_usd_price and fng_value.
+    columns:
+      - name: avg_btc_price
+        description: "Average Bitcoin Price Over Time"
+        tests:
+          - not_null
+        
+
+      - name: avg_fng_value
+        description: "Average Fear and Greed Index Value Over Time"
+        tests:
+          - not_null
+
+      - name: correlation_coefficient
+        description: "Correlation Coefficient between Bitcoin Price and Fear and Greed Index"
+
+      - name: total_volume
+        description: "Total BTC Volume Over Time"
+        tests:
+          - not_null
+
+      - name: rolling_avg_fng_value
+        description: "Rolling Average Fear and Greed Index Value Over Time"
+        tests:
+          - not_null
+
+      - name: rolling_avg_btc_price
+        description: "Rolling Average Bitcoin Price Over Time"
+        tests:
+          - not_null
+
+      - name: median_btc_price
+        description: "Median Bitcoin Price Over Time"
+        tests:
+          - not_null
+
+
+      - name: lower_quartile_btc_price
+        description: "Lower Quartile Bitcoin Price Over Time"
+        tests:
+          - not_null
+
+      - name: upper_quartile_btc_price
+        description: "Upper Quartile Bitcoin Price Over Time"
+        tests:
+          - not_null
+
+      - name: median_fng_value
+        description: "Median Fear and Greed Index Value Over Time"
+        tests:
+          - not_null
+
+
+      - name: lower_quartile_fng_value
+        description: "Lower Quartile Fear and Greed Index Value Over Time"
+        tests:
+          - not_null
+
+
+      - name: upper_quartile_fng_value
+        description: "Upper Quartile Fear and Greed Index Value Over Time"
+        tests:
+          - not_null
+
+
+
+  - name: fact_crypto_sentiment
+    description: >
+      this table contains both the bitcoin historical data and the fear and greed index joined on the trade_date column.
+    columns:
+      - name: trade_date
+        description: this column shows the date corresponding to the price of bitcoin.
+        tests:
+          - not_null:
+              severity: warn
+      - name: trade_volume
+        description: it contains the 24h trade volume of bitcoin on coinbase exchange in USD.
+        tests:
+          - not_null:
+              severity: warn
+      - name: btc_usd_price
+        description: The price of bitcoin in usd.
+        tests:
+          - not_null:
+              severity: warn
+      - name: fng_value
+        description: This column contains the fear and greed index value based on the analysis of the current sentiment of the Bitcoin market and crunch the numbers into a simple meter from 0 to 100. Zero means "Extreme Fear", while 100 means "Extreme Greed"
+        tests:
+          - not_null:
+              severity: warn
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 100
+              inclusive: true
+      - name: value_classification
+        description: A value classification of the fear and greed index value based on the following metrics;
+              Score 	Sentiment 
+          *  0 to 24 	Extreme Fear.
+          * 25 to 44 	Fear. 
+          * 45 to 55	Neutral.
+          * 56 to 75	Greed.
+          * 76 to 100	Extreme Greed.
+        tests:
+          - accepted_values:
+              values: ['Extreme Fear', 'Fear', 'Neutral', 'Greed', 'Extreme Greed']
+              severity: error

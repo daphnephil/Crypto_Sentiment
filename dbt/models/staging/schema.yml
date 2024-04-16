@@ -1,0 +1,66 @@
+version: 2
+
+sources:
+  - name: staging
+    database:
+      dtc-de-course-380621
+      # For postgres:
+      #database: production
+    schema:
+      crypto_sentiment
+
+      # loaded_at_field: record_loaded_at
+    tables:
+      - name: crypto_data_partitoned
+      - name:
+          fng_data_partitoned_clustered
+          # freshness:
+          # error_after: {count: 6, period: hour}
+
+models:
+  - name: stg_crypto_data_partitoned
+    description: >
+      This contains bitcoin trade history from bitcoincharts in usd.
+    columns:
+      - name: trade_date
+        description: this column shows the date corresponding to the price of bitcoin.
+        tests:
+          - not_null:
+              severity: warn
+      - name: trade_volume
+        description: it contains the 24h trade volume of bitcoin on coinbase exchange in usd
+        tests:
+          - not_null:
+              severity: warn
+      - name: btc_usd_price
+        description: The price of bitcoin in usd.
+        tests:
+          - not_null:
+              severity: warn
+
+  - name: stg_fng_data_partitoned_clustered
+    description: >
+      This table contains Crypto Fear & Greed Index.
+      Each day, we analyze emotions and sentiments from different sources and crunch them into one simple number: The Fear & Greed Index for Bitcoin.
+    columns:
+      - name: fng_value
+        description: This column contains the fear and greed index value based on the analysis of the current sentiment of the Bitcoin market and crunch the numbers into a simple meter from 0 to 100. Zero means "Extreme Fear", while 100 means "Extreme Greed"
+        tests:
+          - not_null:
+              severity: warn
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 100
+              inclusive: true
+      - name: value_classification
+        description: >
+          A value classification of the fear and greed index value based on the following metrics;
+              Score 	Sentiment 
+          *  0 to 24 	Extreme Fear.
+          * 25 to 44 	Fear. 
+          * 45 to 55	Neutral.
+          * 56 to 75	Greed.
+          * 76 to 100	Extreme Greed.
+        tests:
+          - accepted_values:
+              values: ['Extreme Fear', 'Fear', 'Neutral', 'Greed', 'Extreme Greed']
