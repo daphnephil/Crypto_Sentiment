@@ -118,7 +118,7 @@ To set up this project on google compute engine, follow these steps:
    ```
    git clone https://github.com/daphnephil/Crypto_Sentiment.git
    ```
-
+4. Edit the files as instructed in this [mage doc](https://docs.mage.ai/production/deploying-to-cloud/gcp/setup)
 
 ### Usage
 Once the setup is complete, you can run the pipeline to collect and analyze cryptocurrency sentiment data. Here's how to use the pipeline:
