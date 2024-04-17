@@ -20,23 +20,46 @@ sources:
 models:
   - name: stg_crypto_data_partitoned
     description: >
-      This contains bitcoin trade history from bitcoincharts in usd.
+      This contains bitcoin daily trade history from bitstamp exchange in usd from 2014 to 2024.
     columns:
       - name: trade_date
         description: this column shows the date corresponding to the price of bitcoin.
         tests:
           - not_null:
               severity: warn
-      - name: trade_volume
-        description: it contains the 24h trade volume of bitcoin on coinbase exchange in USD
+      - name: open_btc
+        description: it contains the open price of bitcoin on bitstamp exchange in USD for the day.
         tests:
           - not_null:
               severity: warn
-      - name: btc_usd_price
-        description: The price of bitcoin in usd.
+      - name: high_btc
+        description: The highest price of bitcoin on bitstamp exchange in usd for the day.
         tests:
           - not_null:
               severity: warn
+      - name: low_btc
+        description: The lowest price of bitcoin on bitstamp exchange in usd for the day.
+        tests:
+          - not_null:
+              severity: warn
+      - name: close_btc
+        description: The closing price of bitcoin on bitstamp exchange in usd for the day.
+        tests:
+          - not_null:
+              severity: warn
+
+      - name: btc_volume
+        description: The volume price of bitcoin in usd.
+        tests:
+          - not_null:
+              severity: warn
+      - name: usd_volume
+        description: The trade volume of bitcoin on bitstamp exchange in usd.
+        tests:
+          - not_null:
+              severity: warn
+
+
 
   - name: stg_fng_data_partitoned_clustered
     description: >

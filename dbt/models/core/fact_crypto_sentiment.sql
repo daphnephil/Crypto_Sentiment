@@ -13,11 +13,12 @@ fng_data as (
 )
 
 select 
-fng_data.trade_date,
-crypto_data.trade_volume,
-crypto_data.btc_usd_price,
+crypto_data.trade_date,
+crypto_data.btc_volume,
+crypto_data.usd_volume,
+crypto_data.close_btc,
 fng_data.fng_value,
 fng_data.value_classification
 from crypto_data
-inner join fng_data
+left join fng_data
 on crypto_data.trade_date = fng_data.trade_date
