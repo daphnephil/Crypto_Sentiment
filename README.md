@@ -5,8 +5,12 @@ This project aims to analyze cryptocurrency sentiment by collecting and analyzin
 * Introduction
 * Project Architecture
 * Project Structure
-* Setup
-* Usage
+* Data Ingestion
+* Exporting Data to Data Lake and Data Warehouse
+* Data Transformation
+* Visualization
+* Conclusion
+* Reproduce this project
 * Contributing
 * License
 
@@ -15,9 +19,23 @@ Cryptocurrencies have become increasingly popular as an investment option, but t
 
 
 ### Project Architecture
+
+The project architecture involves several components working together:
+
+* Bitstamp API: Provides historical data on Bitcoin prices.
+* Alternate.me Fear and Greed Index API: Provides sentiment analysis data for Bitcoin.
+* Google Virtual Machine: Hosts the pipeline using Docker.
+* Terraform: Orchestrates the deployment of resources on Google Cloud Platform.
+* Mage.ai: A workflow orchestration tool used for data extraction, transformation, and loading (ETL) tasks.
+* Google Cloud Storage: Stores raw data extracted from APIs.
+* Google BigQuery: Serves as a data warehouse for storing and querying structured data.
+* dbt: transforms the data and builds fact and dimension models.
+* Looker: Provides visualization and analysis capabilities for the data stored in BigQuery.
+
 ![Image of the project Architecture](https://github.com/daphnephil/Crypto_Sentiment/blob/main/Crypto_sentiment.svg)
 
 ### Project Structure
+The project directory structure is organized as follows:
 ```
 📦 
 ├─ Crypto_Sentiment_Analysis.pdf
@@ -100,6 +118,30 @@ Cryptocurrencies have become increasingly popular as an investment option, but t
    ├─ main.tf
    └─ variables.tf
 ```
+
+### Data Ingestion
+Historical data from the Bitstamp API and sentiment analysis data from the Alternate.me Fear and Greed Index API are ingested using mage.ai. The ETL pipeline is scheduled to run monthly to ensure up-to-date analysis.
+
+![mage_etl](https://github.com/daphnephil/Crypto_Sentiment/blob/main/Mage_ETL.png)
+
+### Exporting Data to Datalake and Warehouse
+The extracted data is exported to Google Cloud Storage and subsequently loaded into Google BigQuery. The crypto_data is partitioned based on the date column, and the fng_data is partitioned and clustered based on the date and value_classification column, respectively, for optimized querying.
+
+### Data Transformation
+Data transformation tasks are performed using dbt (data build tool). Fact and dimension models are built to organize and structure the data for analysis.
+
+![dbt model](https://github.com/daphnephil/Crypto_Sentiment/blob/main/dbt-dag%20(3).png)
+### Visualisation
+
+The transformed data is visualized using Looker, a business intelligence and analytics platform. This enables stakeholders to gain insights through interactive dashboards and reports.
+
+![Visualization with looker](https://github.com/daphnephil/Crypto_Sentiment/blob/main/Looker_Vis.png)
+
+### Conclusion
+
+The analysis reveals a correlation between Bitcoin prices and sentiment as measured by the Fear and Greed Index. However, it's important to note that this correlation is based on available data and should be interpreted cautiously.
+
+## Reproduce this project
 ### Setup
 To set up this project on google compute engine, follow these steps:
 1. Set up google cloud by following this video description by [DataTalksClub](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=14)
@@ -163,8 +205,7 @@ Execute the crypto_sentiment pipeline on Mage to extract data from Bitstamp API 
     This builds the fact and dimension models.
 5. Visualize Data:
 Use Looker or any other visualization tool to analyze and visualize the fact_crypto_sentiment_data.
-### Conclusion
-![Visualization with looker](https://github.com/daphnephil/Crypto_Sentiment/blob/main/Looker_Vis.png)
+
 ### Contributing
 Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
 
