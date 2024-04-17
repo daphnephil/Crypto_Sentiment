@@ -47,17 +47,16 @@ Cryptocurrencies have become increasingly popular as an investment option, but t
    │  ├─ Readme.md
    │  ├─ __init__.py
    │  ├─ __pycache__
-   │  │  └─ __init__.cpython-310.pyc
+   │  │  └─ __init__.py
    │  ├─ data_exporters
    │  │  ├─ __init__.py
    │  │  ├─ __pycache__
-   │  │  │  ├─ __init__.cpython-310.pyc
-   │  │  │  ├─ export_crypto_data_to_bq.cpython-310.pyc
-   │  │  │  ├─ export_crypto_data_to_gcs.cpython-310.pyc
-   │  │  │  ├─ export_fng_data_to_bq.cpython-310.pyc
-   │  │  │  ├─ export_fng_data_to_gcs.cpython-310.pyc
-   │  │  │  ├─ export_titanic_clean.cpython-310.pyc
-   │  │  │  └─ load_crypto_data_to_gcs.cpython-310.pyc
+   │  │  │  ├─ __init__.py
+   │  │  │  ├─ export_crypto_data_to_bq.py
+   │  │  │  ├─ export_crypto_data_to_gcs.py
+   │  │  │  ├─ export_fng_data_to_bq.py
+   │  │  │  ├─ export_fng_data_to_gcs.py
+   │  │  │  └─ load_crypto_data_to_gcs.py
    │  │  ├─ export_crypto_data_to_bq.py
    │  │  ├─ export_crypto_data_to_gcs.py
    │  │  ├─ export_fng_data_to_bq.py
@@ -65,11 +64,9 @@ Cryptocurrencies have become increasingly popular as an investment option, but t
    │  ├─ data_loaders
    │  │  ├─ __init__.py
    │  │  ├─ __pycache__
-   │  │  │  ├─ __init__.cpython-310.pyc
-   │  │  │  ├─ creative_herald.cpython-310.pyc
-   │  │  │  ├─ gg.cpython-310.pyc
-   │  │  │  ├─ load_crypto_data_from_api.cpython-310.pyc
-   │  │  │  ├─ load_crypto_data_from_gcs.cpython-310.pyc
+   │  │  │  ├─ __init__.py
+   │  │  │  ├─ load_crypto_data_from_api.py
+   │  │  │  ├─ load_crypto_data_from_gcs.py
    │  │  │  ├─ load_data_from_api.cpython-310.pyc
    │  │  │  ├─ load_fng_data_from_api.cpython-310.pyc
    │  │  │  ├─ load_fng_data_from_gcs.cpython-310.pyc
