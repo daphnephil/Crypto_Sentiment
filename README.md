@@ -11,6 +11,90 @@ This project aims to analyze cryptocurrency sentiment by collecting and analyzin
 ### Introduction
 Cryptocurrencies have become increasingly popular as an investment option, but their value is highly volatile and influenced by various factors including market sentiment. Analyzing sentiment can provide valuable insights into market trends and help make informed decisions. This project aims to provide a comprehensive pipeline for analyzing cryptocurrency sentiment specifically focusing on Bitcoin.
 
+### Project Structure
+```
+📦 
+├─ README.md
+├─ crypto_sentiment_pipeline.zip
+├─ dbt
+│  ├─ .gitignore
+│  ├─ .gitkeep
+│  ├─ README.md
+│  ├─ analyses
+│  │  └─ .gitkeep
+│  ├─ dbt_project.yml
+│  ├─ macros
+│  │  ├─ .gitkeep
+│  │  └─ get_value_classification.sql
+│  ├─ models
+│  │  ├─ core
+│  │  │  ├─ dim_crypto_sentiment.sql
+│  │  │  ├─ fact_crypto_sentiment.sql
+│  │  │  └─ schema.yml
+│  │  └─ staging
+│  │     ├─ schema.yml
+│  │     ├─ stg_crypto_data_partitoned.sql
+│  │     └─ stg_fng_data_partitoned_clustered.sql
+│  ├─ package-lock.yml
+│  ├─ packages.yml
+│  ├─ snapshots
+│  │  └─ .gitkeep
+│  └─ tests
+│     └─ .gitkeep
+└─ gcp
+   ├─ .gitignore
+   ├─ crypto_sentiment_pipeline
+   │  ├─ Readme.md
+   │  ├─ __init__.py
+   │  ├─ __pycache__
+   │  │  └─ __init__.cpython-310.pyc
+   │  ├─ data_exporters
+   │  │  ├─ __init__.py
+   │  │  ├─ __pycache__
+   │  │  │  ├─ __init__.cpython-310.pyc
+   │  │  │  ├─ export_crypto_data_to_bq.cpython-310.pyc
+   │  │  │  ├─ export_crypto_data_to_gcs.cpython-310.pyc
+   │  │  │  ├─ export_fng_data_to_bq.cpython-310.pyc
+   │  │  │  ├─ export_fng_data_to_gcs.cpython-310.pyc
+   │  │  │  ├─ export_titanic_clean.cpython-310.pyc
+   │  │  │  └─ load_crypto_data_to_gcs.cpython-310.pyc
+   │  │  ├─ export_crypto_data_to_bq.py
+   │  │  ├─ export_crypto_data_to_gcs.py
+   │  │  ├─ export_fng_data_to_bq.py
+   │  │  └─ export_fng_data_to_gcs.py
+   │  ├─ data_loaders
+   │  │  ├─ __init__.py
+   │  │  ├─ __pycache__
+   │  │  │  ├─ __init__.cpython-310.pyc
+   │  │  │  ├─ creative_herald.cpython-310.pyc
+   │  │  │  ├─ gg.cpython-310.pyc
+   │  │  │  ├─ load_crypto_data_from_api.cpython-310.pyc
+   │  │  │  ├─ load_crypto_data_from_gcs.cpython-310.pyc
+   │  │  │  ├─ load_data_from_api.cpython-310.pyc
+   │  │  │  ├─ load_fng_data_from_api.cpython-310.pyc
+   │  │  │  ├─ load_fng_data_from_gcs.cpython-310.pyc
+   │  │  │  ├─ load_titanic.cpython-310.pyc
+   │  │  │  └─ unstoppable_runesmith.cpython-310.pyc
+   │  │  ├─ load_crypto_data_from_api.py
+   │  │  ├─ load_crypto_data_from_gcs.py
+   │  │  ├─ load_fng_data_from_api.py
+   │  │  └─ load_fng_data_from_gcs.py
+   │  ├─ metadata.yaml
+   │  ├─ transformers
+   │  │  ├─ __init__.py
+   │  │  ├─ __pycache__
+   │  │  │  ├─ __init__.cpython-310.pyc
+   │  │  │  ├─ fill_in_missing_values.cpython-310.pyc
+   │  │  │  └─ transform_crypto_data.cpython-310.pyc
+   │  │  └─ transform_crypto_data.py
+   │  └─ triggers.yaml
+   ├─ db.tf
+   ├─ fs.tf
+   ├─ load_balancer.tf
+   ├─ main.tf
+   └─ variables.tf
+```
+
 ### Setup
 To set up this project on google compute engine, follow these steps:
 1. Set up google cloud by following this video description by [DataTalksClub](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=14)
