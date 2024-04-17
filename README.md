@@ -11,6 +11,10 @@ This project aims to analyze cryptocurrency sentiment by collecting and analyzin
 ### Introduction
 Cryptocurrencies have become increasingly popular as an investment option, but their value is highly volatile and influenced by various factors including market sentiment. Analyzing sentiment can provide valuable insights into market trends and help make informed decisions. This project aims to provide a comprehensive pipeline for analyzing cryptocurrency sentiment specifically focusing on Bitcoin.
 
+
+### Project Architecture
+![Image of the project Architecture](https://github.com/daphnephil/Crypto_Sentiment/blob/main/Crypto_sentiment.svg)
+
 ### Project Structure
 ```
 📦 
