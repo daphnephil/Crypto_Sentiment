@@ -3,6 +3,8 @@ This project aims to analyze cryptocurrency sentiment by collecting and analyzin
 
 ## Table of Contents
 * Introduction
+* Project Architecture
+* Project Structure
 * Setup
 * Usage
 * Contributing
@@ -161,7 +163,8 @@ Execute the crypto_sentiment pipeline on Mage to extract data from Bitstamp API 
     This builds the fact and dimension models.
 5. Visualize Data:
 Use Looker or any other visualization tool to analyze and visualize the fact_crypto_sentiment_data.
-
+### Conclusion
+![Visualization with looker](https://github.com/daphnephil/Crypto_Sentiment/blob/main/Looker_Vis.png)
 ### Contributing
 Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
 
@@ -171,3 +174,6 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 4. Commit your changes (git commit -am 'Add new feature').
 5. Push to the branch (git push origin feature/improvement).
 6. Create a new Pull Request.
+
+### License
+This project is licensed under the MIT License
