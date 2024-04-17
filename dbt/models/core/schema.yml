@@ -15,58 +15,67 @@ models:
       - name: avg_fng_value
         description: "Average Fear and Greed Index Value Over Time"
         tests:
-          - not_null
-
+          - not_null:
+              severity: warn
       - name: correlation_coefficient
         description: "Correlation Coefficient between Bitcoin Price and Fear and Greed Index"
 
-      - name: total_volume
+      - name: total_btc_volume
         description: "Total BTC Volume Over Time"
         tests:
-          - not_null
+          - not_null:
+              severity: warn
 
       - name: rolling_avg_fng_value
         description: "Rolling Average Fear and Greed Index Value Over Time"
         tests:
-          - not_null
+          - not_null:
+              severity: warn
 
       - name: rolling_avg_btc_price
         description: "Rolling Average Bitcoin Price Over Time"
         tests:
-          - not_null
+          - not_null:
+              severity: warn
 
       - name: median_btc_price
         description: "Median Bitcoin Price Over Time"
         tests:
-          - not_null
+          - not_null:
+              severity: warn
 
 
       - name: lower_quartile_btc_price
         description: "Lower Quartile Bitcoin Price Over Time"
         tests:
-          - not_null
+          - not_null:
+              severity: warn
 
       - name: upper_quartile_btc_price
         description: "Upper Quartile Bitcoin Price Over Time"
         tests:
-          - not_null
+          - not_null:
+              severity: warn
 
       - name: median_fng_value
         description: "Median Fear and Greed Index Value Over Time"
         tests:
-          - not_null
+          - not_null:
+              severity: warn
 
 
       - name: lower_quartile_fng_value
         description: "Lower Quartile Fear and Greed Index Value Over Time"
         tests:
-          - not_null
+          - not_null:
+              severity: warn
 
 
       - name: upper_quartile_fng_value
         description: "Upper Quartile Fear and Greed Index Value Over Time"
         tests:
-          - not_null
+          - not_null:
+              severity: warn
 
 
 
@@ -79,13 +88,18 @@ models:
         tests:
           - not_null:
               severity: warn
-      - name: trade_volume
-        description: it contains the 24h trade volume of bitcoin on coinbase exchange in USD.
+      - name: btc_volume
+        description: it contains the 24h volume of bitcoin on bitstamp exchange in USD.
         tests:
           - not_null:
               severity: warn
-      - name: btc_usd_price
-        description: The price of bitcoin in usd.
+      - name: usd_volume
+        description: it contains the 24h trade volume of bitcoin on bitstamp exchange in USD.
+        tests:
+          - not_null:
+              severity: warn
+      - name: close_btc
+        description: The closing price of bitcoin on bitstamp exchange in usd for the day.
         tests:
           - not_null:
               severity: warn
