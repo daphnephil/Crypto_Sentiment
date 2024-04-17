@@ -1,0 +1,12 @@
+triggers:
+- envs: []
+  last_enabled_at: 2024-04-17 14:05:41.809021
+  name: crypto_sentiment_analysis
+  pipeline_uuid: crypto_sentiment_pipeline
+  schedule_interval: '@monthly'
+  schedule_type: time
+  settings: null
+  sla: null
+  start_time: 2024-04-17 13:26:00
+  status: inactive
+  variables: {}

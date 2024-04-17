@@ -1,0 +1,176 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - export_fng_data_to_gcs
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_fng_data_from_api
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: load_fng_data_from_api
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - transform_crypto_data
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_crypto_data_from_api
+  retry_config: null
+  status: updated
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: load_crypto_data_from_api
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - export_crypto_data_to_gcs
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: transform_crypto_data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - load_crypto_data_from_api
+  uuid: transform_crypto_data
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - load_crypto_data_from_gcs
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: export_crypto_data_to_gcs
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - transform_crypto_data
+  uuid: export_crypto_data_to_gcs
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - load_fng_data_from_gcs
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: export_fng_data_to_gcs
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - load_fng_data_from_api
+  uuid: export_fng_data_to_gcs
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - export_crypto_data_to_bq
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_crypto_data_from_gcs
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks:
+  - export_crypto_data_to_gcs
+  uuid: load_crypto_data_from_gcs
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - export_fng_data_to_bq
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_fng_data_from_gcs
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks:
+  - export_fng_data_to_gcs
+  uuid: load_fng_data_from_gcs
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: export_crypto_data_to_bq
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - load_crypto_data_from_gcs
+  uuid: export_crypto_data_to_bq
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: export_fng_data_to_bq
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - load_fng_data_from_gcs
+  uuid: export_fng_data_to_bq
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2024-04-10 08:53:54.891501+00:00'
+data_integration: null
+description: This pipeline loads the cryptocurrency and fear and greed index data
+  from API to the google cloud storage
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: crypto_sentiment_pipeline
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers:
+    save_in_code_automatically: true
+spark_config: {}
+tags: []
+type: python
+uuid: crypto_sentiment_pipeline
+variables_dir: /home/src/mage_data/magic-zoomcamp
+widgets: []
