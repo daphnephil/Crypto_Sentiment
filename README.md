@@ -14,8 +14,9 @@ Cryptocurrencies have become increasingly popular as an investment option, but t
 ### Project Structure
 ```
 📦 
+├─ Crypto_Sentiment_Analysis.pdf
+├─ Crypto_sentiment.svg
 ├─ README.md
-├─ crypto_sentiment_pipeline.zip
 ├─ dbt
 │  ├─ .gitignore
 │  ├─ .gitkeep
@@ -44,19 +45,19 @@ Cryptocurrencies have become increasingly popular as an investment option, but t
 └─ gcp
    ├─ .gitignore
    ├─ crypto_sentiment_pipeline
-   │  ├─ Readme.md
    │  ├─ __init__.py
    │  ├─ __pycache__
-   │  │  └─ __init__.py
+   │  │  └─ __init__.cpython-310.pyc
    │  ├─ data_exporters
    │  │  ├─ __init__.py
    │  │  ├─ __pycache__
-   │  │  │  ├─ __init__.py
-   │  │  │  ├─ export_crypto_data_to_bq.py
-   │  │  │  ├─ export_crypto_data_to_gcs.py
-   │  │  │  ├─ export_fng_data_to_bq.py
-   │  │  │  ├─ export_fng_data_to_gcs.py
-   │  │  │  └─ load_crypto_data_to_gcs.py
+   │  │  │  ├─ __init__.cpython-310.pyc
+   │  │  │  ├─ export_crypto_data_to_bq.cpython-310.pyc
+   │  │  │  ├─ export_crypto_data_to_gcs.cpython-310.pyc
+   │  │  │  ├─ export_fng_data_to_bq.cpython-310.pyc
+   │  │  │  ├─ export_fng_data_to_gcs.cpython-310.pyc
+   │  │  │  ├─ export_titanic_clean.cpython-310.pyc
+   │  │  │  └─ load_crypto_data_to_gcs.cpython-310.pyc
    │  │  ├─ export_crypto_data_to_bq.py
    │  │  ├─ export_crypto_data_to_gcs.py
    │  │  ├─ export_fng_data_to_bq.py
@@ -64,9 +65,11 @@ Cryptocurrencies have become increasingly popular as an investment option, but t
    │  ├─ data_loaders
    │  │  ├─ __init__.py
    │  │  ├─ __pycache__
-   │  │  │  ├─ __init__.py
-   │  │  │  ├─ load_crypto_data_from_api.py
-   │  │  │  ├─ load_crypto_data_from_gcs.py
+   │  │  │  ├─ __init__.cpython-310.pyc
+   │  │  │  ├─ creative_herald.cpython-310.pyc
+   │  │  │  ├─ gg.cpython-310.pyc
+   │  │  │  ├─ load_crypto_data_from_api.cpython-310.pyc
+   │  │  │  ├─ load_crypto_data_from_gcs.cpython-310.pyc
    │  │  │  ├─ load_data_from_api.cpython-310.pyc
    │  │  │  ├─ load_fng_data_from_api.cpython-310.pyc
    │  │  │  ├─ load_fng_data_from_gcs.cpython-310.pyc
@@ -91,7 +94,6 @@ Cryptocurrencies have become increasingly popular as an investment option, but t
    ├─ main.tf
    └─ variables.tf
 ```
-
 ### Setup
 To set up this project on google compute engine, follow these steps:
 1. Set up google cloud by following this video description by [DataTalksClub](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=14)
